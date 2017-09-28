@@ -2,6 +2,7 @@ package com.theironyard.charlotte.sampleherokusite;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +23,24 @@ public class BookController {
     }
     // {"isbn":"12345","title":"The Great Gatsomething","author":"yamama"}
 
-//    @CrossOrigin(origins = {"http://thegoogs.com", "yahoo.com", "idk.com"})
+    //    @CrossOrigin(origins = {"http://thegoogs.com", "yahoo.com", "idk.com"})
     @CrossOrigin
     @RequestMapping(path = "/books", method = RequestMethod.POST)
     public void addBook(@RequestBody Book book) {
         books.add(book);
+    }
 
+    @CrossOrigin
+    @RequestMapping(path = "/checkedIn", method = RequestMethod.PATCH)
+    public void checkedIn(@RequestBody Book bookHere) {
+        bookHere.setCheckedOut(false);
+        System.out.println("RRREEEAAADDD!");
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/checkedIn", method = RequestMethod.PATCH)
+    public void checkedOut(@RequestBody Book bookHere) {
+        bookHere.setCheckedOut(true);
+        System.out.println("No book! Yay binge watching!");
     }
 }
