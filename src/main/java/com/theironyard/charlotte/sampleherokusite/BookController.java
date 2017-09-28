@@ -2,7 +2,6 @@ package com.theironyard.charlotte.sampleherokusite;
 
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class BookController {
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/checkedIn", method = RequestMethod.PATCH)
+    @RequestMapping(path = "/checkedOut", method = RequestMethod.PATCH)
     public void checkedOut(@RequestBody Book bookHere) {
         bookHere.setCheckedOut(true);
         System.out.println("No book! Yay binge watching!");
